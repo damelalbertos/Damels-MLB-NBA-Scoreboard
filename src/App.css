@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.me-1{ margin-right:.25rem }
+.me-2{ margin-right:.5rem }
+.ms-1{ margin-left:.25rem }
+.ms-2{ margin-left:.5rem }
+
+.team-logo { height: 24px; vertical-align: middle; }

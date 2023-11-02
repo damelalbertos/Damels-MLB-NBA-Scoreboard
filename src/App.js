@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper} from '@mui/material';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { createGameRows } from './process.js';
+import dayjs from 'dayjs';
 import './App.css';
 const CONFIG = require('./config.js');
 
+function BasicDatePicker({ value, onChange }) {
+    return (
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DemoContainer components={['DatePicker']}>
+            <DatePicker 
+            label="Basic date picker"
+            value={value}
+            onChange={onChange} 
+            />
+          </DemoContainer>
+        </LocalizationProvider>
+      );
+}
 
 function Scoreboard({data}) {
     return (
@@ -53,14 +72,41 @@ function Scoreboard({data}) {
 }
 
 
-export default function App({data}) {
+export default function App() {
+    const [date, setDate] = useState(dayjs());
+
+    function handleDateChange(newDate) {
+        setDate(newDate);
+    }
+
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async (date) => {
+            try {
+                const data = await createGameRows(date);
+                setData(data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+        fetchData(date);
+      }, [date]);
+    
+
     return (
         <div className="App">
             <header className="App-header">
                 <p>
                     Welcome to Damel's MLB Scoreboard!
                 </p>
-                <div><Scoreboard data={data}/></div>
+                <div><BasicDatePicker value={date} onChange={(newDate)=>{handleDateChange(newDate)}}/></div>
+                {
+                    data.length ? (
+                        <div><Scoreboard data={data}/></div>
+                    ) 
+                    : <p>No Games Today, Select Different Date</p>
+                }
             </header>
         </div>
     );

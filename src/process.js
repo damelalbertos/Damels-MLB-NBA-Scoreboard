@@ -1,5 +1,4 @@
 import axios from 'axios';
-import moment from "moment/moment";
 const CONFIG = require('./config.js');
 
 /**
@@ -107,28 +106,30 @@ function getScore(gameScoreObj) {
  * for each game for the chosen date. This function gets all the data ready for the UI
  * @returns {Array} List of game Objects for the chosen date
  */
-export async function createGameRows() {
+export async function createGameRows(date) {
     let rows = [];
-    let gamesForDate = await getGameData({gameDate: moment().format("YYYYMMDD")}, CONFIG.endpoint.schedule);
+    let gamesForDate = await getGameData({gameDate: date.format("YYYYMMDD")}, CONFIG.endpoint.schedule);
 
-    await Promise.all(gamesForDate.body.map(async (game) => {
-        const {gameID, away, home, gameTime} = game;
-        const { awayTeamScore, homeTeamScore, status, winner } = getScore(await getGameData({gameID}, CONFIG.endpoint.scores));
-        
-        const gameData = {
-            away,
-            awayTeamScore,
-            home,
-            homeTeamScore,
-            gameTime,
-            projWinner: calculateProjection(await getGameData({gameID}, CONFIG.endpoint.odds), game), 
-            status,
-            winner
-
-        }
-
-        rows.push(gameData);
-    }))
+    if (typeof gamesForDate.body[0] !== "string") {
+        await Promise.all(gamesForDate.body.map(async (game) => {
+            const {gameID, away, home, gameTime} = game;
+            const { awayTeamScore, homeTeamScore, status, winner } = getScore(await getGameData({gameID}, CONFIG.endpoint.scores));
+            
+            const gameData = {
+                away,
+                awayTeamScore,
+                home,
+                homeTeamScore,
+                gameTime,
+                projWinner: calculateProjection(await getGameData({gameID}, CONFIG.endpoint.odds), game), 
+                status,
+                winner
+    
+            }
+    
+            rows.push(gameData);
+        }))
+    }
 
     return rows;
 }

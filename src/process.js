@@ -2,11 +2,6 @@ import axios from 'axios';
 import moment from "moment/moment";
 const CONFIG = require('./config.js');
 
-//bJwfDyhXIfFjlW0wdK2TEneZsYaPS0hS // client id
-//UlkKqwnCta1ULJTW9nNC0miFx0JUB6cs0ypRSM_Grk85f6jZPlHtVG41IaZMuamk // client secret
-// export HCP_CLIENT_ID=bJwfDyhXIfFjlW0wdK2TEneZsYaPS0hS
-// export HCP_CLIENT_SECRET=UlkKqwnCta1ULJTW9nNC0miFx0JUB6cs0ypRSM_Grk85f6jZPlHtVG41IaZMuamk
-
 /**
  * This function preps and makes a GET call to the MLB Stats API. This is needed to gather the data that will be 
  * later displayed

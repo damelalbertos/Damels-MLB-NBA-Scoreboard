@@ -14,7 +14,7 @@ function BasicDatePicker({ value, onChange }) {
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DemoContainer components={['DatePicker']}>
             <DatePicker 
-            label="Basic date picker"
+            label="Game Date"
             value={value}
             onChange={onChange} 
             />
@@ -100,10 +100,10 @@ export default function App() {
                 <p>
                     Welcome to Damel's MLB Scoreboard!
                 </p>
-                <div><BasicDatePicker value={date} onChange={(newDate)=>{handleDateChange(newDate)}}/></div>
+                <div className="Date-Picker"><BasicDatePicker value={date} onChange={(newDate)=>{handleDateChange(newDate)}}/></div>
                 {
                     data.length ? (
-                        <div><Scoreboard data={data}/></div>
+                        <div className='ScoreBoard'><Scoreboard data={data}/></div>
                     ) 
                     : <p>No Games Today, Select Different Date</p>
                 }

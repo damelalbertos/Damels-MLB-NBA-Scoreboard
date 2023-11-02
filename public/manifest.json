@@ -1,6 +1,6 @@
 {
-  "short_name": "Damel's MLB Stats App",
-  "name": "Damel's MLB Stats App",
+  "short_name": "Damel's MLB Scoreboard",
+  "name": "Damel's MLB Scoreboard",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",

@@ -35,7 +35,8 @@ async function getGameData(params, endpoint) {
  * @returns {String} Projected winning team based on sports betting data OR No Projection if data is not available
  */
 function calculateProjection(gameOdds, game) {
-    if (!gameOdds.error) {
+    if (!gameOdds.error && hasBettingOdds(gameOdds)) {
+        console.log(gameOdds);
         const { bet365: { awayTeamRunLine, homeTeamRunLine } } = gameOdds.body[Object.keys(gameOdds.body)[0]];
         const { away, home }  = game;
         
@@ -44,9 +45,23 @@ function calculateProjection(gameOdds, game) {
         } else if (homeTeamRunLine > awayTeamRunLine) {
             return home;
         }
-
-        return 'No Projection';
     }
+
+    return 'No Projection';
+}
+
+/**
+ * This function checks to see that the current games betting odds are present to actually
+ * make the projection calculation
+ * @param {Object} gameOddsData - Object with the game's betting odds information
+ * @returns {Boolean} true if bet365 object is present OR false
+ */
+function hasBettingOdds(gameOddsData) {
+    if (gameOddsData.bet365) {
+        return true;
+    }
+
+    return false;
 }
 
 /**

@@ -60,17 +60,29 @@ function Scoreboard({data}) {
                             </TableCell>
                             <TableCell align="center">{item.gameTime}</TableCell>
                             <TableCell align="center">
-                                <img className="team-logo me-1"
+                                {
+                                    item.projWinner === 'No Projection' ?
+                                    (item.projWinner)
+                                    : (
+                                    <img className="team-logo me-1"
                                         src={`${CONFIG.teamLogoBaseUrl}${CONFIG.teamLogoMap[item.projWinner]}.svg`}
                                         alt={item.projWinner}
                                         title={item.projWinner}/>
+                                    )
+                                }
                                 </TableCell>
                             <TableCell align="center">{item.status}</TableCell>
                             <TableCell align="center">
-                                <img className="team-logo me-1"
-                                            src={`${CONFIG.teamLogoBaseUrl}${CONFIG.teamLogoMap[item.winner]}.svg`}
-                                            alt={item.winner}
-                                            title={item.winner}/>
+                            {
+                                    item.winner === "No Winner Yet" ?
+                                    (item.winner)
+                                    : (
+                                    <img className="team-logo me-1"
+                                        src={`${CONFIG.teamLogoBaseUrl}${CONFIG.teamLogoMap[item.winner]}.svg`}
+                                        alt={item.winner}
+                                        title={item.winner}/>
+                                    )
+                                }
                                 </TableCell>
                             <TableCell align="center">{`${item.awayTeamScore} - ${item.homeTeamScore}`}</TableCell>
                         </TableRow>

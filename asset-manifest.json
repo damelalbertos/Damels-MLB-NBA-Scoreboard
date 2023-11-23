@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.5dd4aac0.css",
-    "main.js": "/static/js/main.15a89899.js",
-    "static/js/787.0fb03cc1.chunk.js": "/static/js/787.0fb03cc1.chunk.js",
-    "index.html": "/index.html",
-    "main.5dd4aac0.css.map": "/static/css/main.5dd4aac0.css.map",
-    "main.15a89899.js.map": "/static/js/main.15a89899.js.map",
-    "787.0fb03cc1.chunk.js.map": "/static/js/787.0fb03cc1.chunk.js.map"
+    "main.css": "/mlb-stats-project/static/css/main.5dd4aac0.css",
+    "main.js": "/mlb-stats-project/static/js/main.463c5175.js",
+    "static/js/787.0fb03cc1.chunk.js": "/mlb-stats-project/static/js/787.0fb03cc1.chunk.js",
+    "index.html": "/mlb-stats-project/index.html",
+    "main.5dd4aac0.css.map": "/mlb-stats-project/static/css/main.5dd4aac0.css.map",
+    "main.463c5175.js.map": "/mlb-stats-project/static/js/main.463c5175.js.map",
+    "787.0fb03cc1.chunk.js.map": "/mlb-stats-project/static/js/787.0fb03cc1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5dd4aac0.css",
-    "static/js/main.15a89899.js"
+    "static/js/main.463c5175.js"
   ]
 }

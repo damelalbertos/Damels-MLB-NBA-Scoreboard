@@ -121,18 +121,19 @@ export default function App() {
         <div className="App">
             <header className="App-header">
                 <div className='logo'>
-                <SportsBaseballIcon fontSize='large'/>
+                    <SportsBaseballIcon fontSize='large'/>
                 </div>
                 <div className='DatePicker-Scoreboard'>
-                    {
-                        data.length ? (
-                            <div className='ScoreBoard'>
-                                <div className="Date-Picker"><BasicDatePicker value={date} onChange={(newDate)=>{handleDateChange(newDate)}}/></div>
-                                <Scoreboard data={data}/>
-                            </div>
-                        ) 
-                        : <p>No Games Today, Select Different Date</p>
-                    }
+                    <div className='ScoreBoard'>
+                        <div className="Date-Picker"><BasicDatePicker value={date} onChange={(newDate)=>{handleDateChange(newDate)}}/></div>
+                        {
+                            data.length ? (
+                                    <Scoreboard data={data}/>
+                            ) 
+                            : 
+                            <p>No Games Today, Select Different Date</p>
+                        }
+                    </div>
                 </div>
             </header>
         </div>

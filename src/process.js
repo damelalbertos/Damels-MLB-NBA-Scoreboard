@@ -111,7 +111,7 @@ function getScore(gameScoreObj) {
     return {
         awayTeamScore: gameScoreData.lineScore ? gameScoreData.lineScore.away.R : "0",
         homeTeamScore: gameScoreData.lineScore ? gameScoreData.lineScore.home.R : "0",
-        status: gameScoreData.gameStatus,
+        status: gameScoreData.currentInning,
         winner: calculateWinner(gameScoreData)
     }
 }

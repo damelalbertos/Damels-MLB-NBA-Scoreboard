@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper} from '@mui/material';
+import SportsBaseballIcon from '@mui/icons-material/SportsBaseball';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -25,19 +26,19 @@ function BasicDatePicker({ value, onChange }) {
 
 function Scoreboard({data}) {
     return (
-        <TableContainer component={Paper}>
-            <Table sx={{minWidth: 650}} aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell align="center">Matchup</TableCell>
-                        <TableCell align="center">Game Time</TableCell>
-                        <TableCell align="center">Projected Winner</TableCell>
-                        <TableCell align="center">Status</TableCell>
-                        <TableCell align="center">Actual Winner</TableCell>
-                        <TableCell align="center">Score</TableCell>
+        <TableContainer component={Paper} sx={{ maxHeight: 600 }}>
+            <Table  className='table' sx={{minWidth: 650}} aria-label="simple table">
+                <TableHead className='table-head'>
+                    <TableRow className='header-row'>
+                        <TableCell className="header-cell" align="center">Matchup</TableCell>
+                        <TableCell className="header-cell" align="center">Game Time</TableCell>
+                        <TableCell className="header-cell" align="center">Projected Winner</TableCell>
+                        <TableCell className="header-cell" align="center">Status</TableCell>
+                        <TableCell className="header-cell" align="center">Actual Winner</TableCell>
+                        <TableCell className="header-cell" align="center">Score</TableCell>
                     </TableRow>
                 </TableHead>
-                <TableBody>
+                <TableBody className='table-body'>
                     {data.map((item) => (
                         <TableRow
                             key={item.away}
@@ -58,8 +59,8 @@ function Scoreboard({data}) {
                                         title={item.home}/>
                                 </span>
                             </TableCell>
-                            <TableCell align="center">{item.gameTime}</TableCell>
-                            <TableCell align="center">
+                            <TableCell className="body-cell" align="center">{item.gameTime}</TableCell>
+                            <TableCell className="body-cell" align="center">
                                 {
                                     item.projWinner === 'No Projection' ?
                                     (item.projWinner)
@@ -71,8 +72,8 @@ function Scoreboard({data}) {
                                     )
                                 }
                                 </TableCell>
-                            <TableCell align="center">{item.status}</TableCell>
-                            <TableCell align="center">
+                            <TableCell className="body-cell" align="center">{item.status}</TableCell>
+                            <TableCell className="body-cell" align="center">
                             {
                                     item.winner === "No Winner Yet" ?
                                     (item.winner)
@@ -84,7 +85,7 @@ function Scoreboard({data}) {
                                     )
                                 }
                                 </TableCell>
-                            <TableCell align="center">{`${item.awayTeamScore} - ${item.homeTeamScore}`}</TableCell>
+                            <TableCell  className="body-cell" align="center">{`${item.awayTeamScore} - ${item.homeTeamScore}`}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
@@ -119,16 +120,20 @@ export default function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <p>
-                    Welcome to Damel's MLB Scoreboard!
-                </p>
-                <div className="Date-Picker"><BasicDatePicker value={date} onChange={(newDate)=>{handleDateChange(newDate)}}/></div>
-                {
-                    data.length ? (
-                        <div className='ScoreBoard'><Scoreboard data={data}/></div>
-                    ) 
-                    : <p>No Games Today, Select Different Date</p>
-                }
+                <div className='logo'>
+                <SportsBaseballIcon fontSize='large'/>
+                </div>
+                <div className='DatePicker-Scoreboard'>
+                    {
+                        data.length ? (
+                            <div className='ScoreBoard'>
+                                <div className="Date-Picker"><BasicDatePicker value={date} onChange={(newDate)=>{handleDateChange(newDate)}}/></div>
+                                <Scoreboard data={data}/>
+                            </div>
+                        ) 
+                        : <p>No Games Today, Select Different Date</p>
+                    }
+                </div>
             </header>
         </div>
     );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper} from '@mui/material';
+import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Alert} from '@mui/material';
 import SportsBaseballIcon from '@mui/icons-material/SportsBaseball';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -123,6 +123,9 @@ export default function App() {
                 <div className='logo'>
                     <SportsBaseballIcon fontSize='large'/>
                 </div>
+                
+            </header>
+            <body className='App-body'>
                 <div className='DatePicker-Scoreboard'>
                     <div className='ScoreBoard'>
                         <div className="Date-Picker"><BasicDatePicker value={date} onChange={(newDate)=>{handleDateChange(newDate)}}/></div>
@@ -131,11 +134,11 @@ export default function App() {
                                     <Scoreboard data={data}/>
                             ) 
                             : 
-                            <p>No Games Today, Select Different Date</p>
+                            <Alert severity="info">No Games Today, Select Different Date</Alert>
                         }
                     </div>
                 </div>
-            </header>
+            </body>
         </div>
     );
 }

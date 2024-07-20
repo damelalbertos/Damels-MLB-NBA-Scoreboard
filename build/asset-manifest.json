@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/mlb-stats-project/static/css/main.5dd4aac0.css",
-    "main.js": "/mlb-stats-project/static/js/main.463c5175.js",
+    "main.css": "/mlb-stats-project/static/css/main.8297b3e1.css",
+    "main.js": "/mlb-stats-project/static/js/main.c96ce06e.js",
     "static/js/787.0fb03cc1.chunk.js": "/mlb-stats-project/static/js/787.0fb03cc1.chunk.js",
     "index.html": "/mlb-stats-project/index.html",
-    "main.5dd4aac0.css.map": "/mlb-stats-project/static/css/main.5dd4aac0.css.map",
-    "main.463c5175.js.map": "/mlb-stats-project/static/js/main.463c5175.js.map",
+    "main.8297b3e1.css.map": "/mlb-stats-project/static/css/main.8297b3e1.css.map",
+    "main.c96ce06e.js.map": "/mlb-stats-project/static/js/main.c96ce06e.js.map",
     "787.0fb03cc1.chunk.js.map": "/mlb-stats-project/static/js/787.0fb03cc1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5dd4aac0.css",
-    "static/js/main.463c5175.js"
+    "static/css/main.8297b3e1.css",
+    "static/js/main.c96ce06e.js"
   ]
 }

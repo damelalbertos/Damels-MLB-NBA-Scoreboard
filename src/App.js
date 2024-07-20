@@ -32,7 +32,7 @@ function Scoreboard({data}) {
                     <TableRow className='header-row'>
                         <TableCell className="header-cell" align="center">Matchup</TableCell>
                         <TableCell className="header-cell" align="center">Game Time</TableCell>
-                        <TableCell className="header-cell" align="center">Projected Winner</TableCell>
+                        {/* <TableCell className="header-cell" align="center">Projected Winner</TableCell> */}
                         <TableCell className="header-cell" align="center">Status</TableCell>
                         <TableCell className="header-cell" align="center">Actual Winner</TableCell>
                         <TableCell className="header-cell" align="center">Score</TableCell>
@@ -60,7 +60,7 @@ function Scoreboard({data}) {
                                 </span>
                             </TableCell>
                             <TableCell className="body-cell" align="center">{item.gameTime}</TableCell>
-                            <TableCell className="body-cell" align="center">
+                            {/* <TableCell className="body-cell" align="center">
                                 {
                                     item.projWinner === 'No Projection' ?
                                     (item.projWinner)
@@ -71,7 +71,7 @@ function Scoreboard({data}) {
                                         title={item.projWinner}/>
                                     )
                                 }
-                                </TableCell>
+                                </TableCell> */}
                             <TableCell className="body-cell" align="center">{item.status}</TableCell>
                             <TableCell className="body-cell" align="center">
                             {

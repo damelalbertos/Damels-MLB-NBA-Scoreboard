@@ -123,30 +123,30 @@ function getScore(gameScoreObj) {
  * @returns {Array} List of game Objects for the chosen date
  */
 export async function createGameRows(date) {
-    return data;
-    // let rows = [];
-    // let gamesForDate = await getGameData({gameDate: date.format("YYYYMMDD")}, CONFIG.endpoint.schedule);
+    //return data;
+    let rows = [];
+    let gamesForDate = await getGameData({gameDate: date.format("YYYYMMDD")}, CONFIG.endpoint.schedule);
 
-    // if (typeof gamesForDate.body[0] !== "string") {
-    //     await Promise.all(gamesForDate.body.map(async (game) => {
-    //         const {gameID, away, home, gameTime} = game;
-    //         const { awayTeamScore, homeTeamScore, status, winner } = getScore(await getGameData({gameID}, CONFIG.endpoint.scores));
+    if (typeof gamesForDate.body[0] !== "string") {
+        await Promise.all(gamesForDate.body.map(async (game) => {
+            const {gameID, away, home, gameTime} = game;
+            const { awayTeamScore, homeTeamScore, status, winner } = getScore(await getGameData({gameID}, CONFIG.endpoint.scores));
             
-    //         const gameData = {
-    //             away,
-    //             awayTeamScore,
-    //             home,
-    //             homeTeamScore,
-    //             gameTime,
-    //             projWinner: calculateProjection(await getGameData({gameID}, CONFIG.endpoint.odds), game), 
-    //             status,
-    //             winner
+            const gameData = {
+                away,
+                awayTeamScore,
+                home,
+                homeTeamScore,
+                gameTime,
+                projWinner: calculateProjection(await getGameData({gameID}, CONFIG.endpoint.odds), game), 
+                status,
+                winner
     
-    //         }
+            }
     
-    //         rows.push(gameData);
-    //     }))
-    // }
+            rows.push(gameData);
+        }))
+    }
 
-    // return rows;
+    return rows;
 }

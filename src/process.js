@@ -123,6 +123,7 @@ function getScore(gameScoreObj) {
  * @returns {Array} List of game Objects for the chosen date
  */
 export async function createGameRows(date) {
+    
     return data;
     // let rows = [];
     // let gamesForDate = await getGameData({gameDate: date.format("YYYYMMDD")}, CONFIG.endpoint.schedule);

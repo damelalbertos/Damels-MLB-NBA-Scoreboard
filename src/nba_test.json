@@ -1,0 +1,101 @@
+[
+  {
+    "away": "TOR",
+    "awayTeamScore": "133",
+    "home": "CHA",
+    "homeTeamScore": "138",
+    "gameTime": "7:00p",
+    "status": "Final",
+    "winner": "CHA"
+  },
+  {
+    "away": "NO",
+    "awayTeamScore": "89",
+    "home": "GS",
+    "homeTeamScore": "104",
+    "gameTime": "10:00p",
+    "status": "Final",
+    "winner": "GS"
+  },
+  {
+    "away": "DET",
+    "awayTeamScore": "105",
+    "home": "PHI",
+    "homeTeamScore": "95",
+    "gameTime": "7:00p",
+    "status": "Final",
+    "winner": "DET"
+  },
+  {
+    "away": "BOS",
+    "awayTeamScore": "132",
+    "home": "IND",
+    "homeTeamScore": "135",
+    "gameTime": "7:00p",
+    "status": "Final/OT",
+    "winner": "IND"
+  },
+  {
+    "away": "POR",
+    "awayTeamScore": "106",
+    "home": "LAC",
+    "homeTeamScore": "105",
+    "gameTime": "10:30p",
+    "status": "Final",
+    "winner": "POR"
+  },
+  {
+    "away": "ATL",
+    "awayTeamScore": "120",
+    "home": "WAS",
+    "homeTeamScore": "133",
+    "gameTime": "7:00p",
+    "status": "Final",
+    "winner": "WAS"
+  },
+  {
+    "away": "SA",
+    "awayTeamScore": "93",
+    "home": "OKC",
+    "homeTeamScore": "105",
+    "gameTime": "9:30p",
+    "status": "Final",
+    "winner": "OKC"
+  },
+  {
+    "away": "NY",
+    "awayTeamScore": "116",
+    "home": "MIA",
+    "homeTeamScore": "107",
+    "gameTime": "7:30p",
+    "status": "Final",
+    "winner": "NY"
+  },
+  {
+    "away": "BKN",
+    "awayTeamScore": "119",
+    "home": "MEM",
+    "homeTeamScore": "106",
+    "gameTime": "8:00p",
+    "status": "Final",
+    "winner": "BKN"
+  },
+  {
+    "away": "ORL",
+    "awayTeamScore": "99",
+    "home": "CHI",
+    "homeTeamScore": "102",
+    "gameTime": "8:00p",
+    "status": "Final",
+    "winner": "CHI"
+  },
+  {
+    "away": "LAL",
+    "awayTeamScore": "110",
+    "home": "CLE",
+    "homeTeamScore": "134",
+    "gameTime": "7:00p",
+    "status": "Final",
+    "winner": "CLE"
+  }
+]

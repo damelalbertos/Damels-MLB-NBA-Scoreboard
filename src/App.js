@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Alert} from '@mui/material';
-import SportsBaseballIcon from '@mui/icons-material/SportsBaseball';
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    Paper,
+    Alert,
+    IconButton, Icon
+} from '@mui/material';
+import ScoreboardIcon from '@mui/icons-material/Scoreboard';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -8,23 +18,24 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { createGameRows } from './process.js';
 import dayjs from 'dayjs';
 import './App.css';
+import * as constants from "./constants";
 const CONFIG = require('./config.js');
 
 function BasicDatePicker({ value, onChange }) {
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DemoContainer components={['DatePicker']}>
-            <DatePicker 
+            <DatePicker
             label="Game Date"
             value={value}
-            onChange={onChange} 
+            onChange={onChange}
             />
           </DemoContainer>
         </LocalizationProvider>
       );
 }
 
-function Scoreboard({data}) {
+function Scoreboard({sport,data}) {
     return (
         <TableContainer component={Paper} sx={{ maxHeight: 600 }}>
             <Table  className='table' sx={{minWidth: 650}} aria-label="simple table">
@@ -33,7 +44,7 @@ function Scoreboard({data}) {
                         <TableCell className="header-cell" align="center">Matchup</TableCell>
                         <TableCell className="header-cell" align="center">Game Time</TableCell>
                         <TableCell className="header-cell" align="center">Status</TableCell>
-                        <TableCell className="header-cell" align="center">Actual Winner</TableCell>
+                        <TableCell className="header-cell" align="center">Winner</TableCell>
                         <TableCell className="header-cell" align="center">Score</TableCell>
                     </TableRow>
                 </TableHead>
@@ -46,14 +57,14 @@ function Scoreboard({data}) {
                             <TableCell component="th" scope="row">
                                 <span className="me-2">
                                     <img className="team-logo me-1"
-                                        src={`${CONFIG.teamLogoBaseUrl}${CONFIG.teamLogoMap[item.away]}.svg`}
+                                        src={`${CONFIG.logos[sport].logoBaseUrl}${CONFIG.logos[sport].teamLogoMap[item.away]}.svg`}
                                         alt={item.away}
                                         title={item.away}/>
                                 </span>
                                 <span> @ </span>
                                 <span className="ms-2">
                                     <img className="team-logo me-1"
-                                        src={`${CONFIG.teamLogoBaseUrl}${CONFIG.teamLogoMap[item.home]}.svg`}
+                                        src={`${CONFIG.logos[sport].logoBaseUrl}${CONFIG.logos[sport].teamLogoMap[item.home]}.svg`}
                                         alt={item.home}
                                         title={item.home}/>
                                 </span>
@@ -66,7 +77,7 @@ function Scoreboard({data}) {
                                     (item.winner)
                                     : (
                                     <img className="team-logo me-1"
-                                        src={`${CONFIG.teamLogoBaseUrl}${CONFIG.teamLogoMap[item.winner]}.svg`}
+                                        src={`${CONFIG.logos[sport].logoBaseUrl}${CONFIG.logos[sport].teamLogoMap[item.winner]}.svg`}
                                         alt={item.winner}
                                         title={item.winner}/>
                                     )
@@ -84,47 +95,80 @@ function Scoreboard({data}) {
 
 export default function App() {
     const [date, setDate] = useState(dayjs());
-
-    function handleDateChange(newDate) {
-        setDate(newDate);
-    }
-
+    const [selectedSport, setSelectedSport] = useState('');
     const [data, setData] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async (date) => {
-            try {
-                const data = await createGameRows(date);
-                setData(data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
+    async function handleSportSelection(newSport) {
+        setSelectedSport(newSport);
+        await fetchData(date, newSport);
+    }
+
+    async function handleDateChange(newDate) {
+        setDate(newDate);
+        await fetchData(newDate, selectedSport);
+    }
+
+    const fetchData = async (date, selectedSport) => {
+        try {
+            const data = await createGameRows(date, selectedSport);
+            console.log(data);
+            setData(data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
         }
-        fetchData(date);
-      }, [date]);
-    
+    }
+
+    // useEffect(() => {
+    //     const fetchData = async (date) => {
+    //         try {
+    //             const data = await createGameRows(date, selectedSport);
+    //             console.log(data);
+    //             setData(data);
+    //         } catch (error) {
+    //             console.error('Error fetching data:', error);
+    //         }
+    //     }
+    //     fetchData(date);
+    //   }, [date, selectedSport]);
+
 
     return (
         <div className="App">
             <header className="App-header">
                 <div className='logo'>
-                    <SportsBaseballIcon fontSize='large'/>
+                    <ScoreboardIcon onClick={()=>{setSelectedSport("")}} fontSize='large'/>
                 </div>
-                
+
             </header>
             <body className='App-body'>
-                <div className='DatePicker-Scoreboard'>
+                {!selectedSport ?
+                    <div className='SportPicker'>
+                        <IconButton onClick={()=>{handleSportSelection(constants.MLB)}}>
+                            <Icon>
+                                <img src={`${CONFIG.logos.mlb.logoBaseUrl}${CONFIG.logos.mlb.leagueLogoEndpoint}.svg`}/>
+                            </Icon>
+                        </IconButton>
+                        <IconButton onClick={()=>{handleSportSelection(constants.NBA)}}>
+                            <Icon>
+                                <img src={`${CONFIG.logos.nba.logoBaseUrl}${CONFIG.logos.nba.leagueLogoEndpoint}.svg`}/>
+                            </Icon>
+                        </IconButton>
+                    </div>
+                    : ''}
+                {selectedSport ? <div className='DatePicker-Scoreboard'>
                     <div className='ScoreBoard'>
-                        <div className="Date-Picker"><BasicDatePicker value={date} onChange={(newDate)=>{handleDateChange(newDate)}}/></div>
+                        <div className="Date-Picker">
+                            <BasicDatePicker value={date} onChange={(newDate)=>{handleDateChange(newDate)}}/>
+                        </div>
                         {
                             data.length ? (
-                                    <Scoreboard data={data}/>
-                            ) 
-                            : 
+                                    <Scoreboard sport={selectedSport} data={data}/>
+                            )
+                            :
                             <Alert severity="info">No Games Today, Select Different Date</Alert>
                         }
                     </div>
-                </div>
+                </div> : ''}
             </body>
         </div>
     );

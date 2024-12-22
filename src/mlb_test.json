@@ -1,152 +1,152 @@
 [
-    {
-        "away": "PIT",
-        "awayTeamScore": "2",
-        "home": "CIN",
-        "homeTeamScore": "6",
-        "gameTime": "4:11p",
-        "projWinner": "No Projection",
-        "status": "Completed",
-        "winner": "CIN"
-    },
-    {
-        "away": "LAA",
-        "awayTeamScore": "13",
-        "home": "OAK",
-        "homeTeamScore": "1",
-        "gameTime": "1:07p",
-        "projWinner": "No Projection",
-        "status": "Completed",
-        "winner": "LAA"
-    },
-    {
-        "away": "ARI",
-        "awayTeamScore": "1",
-        "home": "LAD",
-        "homeTeamScore": "10",
-        "gameTime": "6:10p",
-        "projWinner": "No Projection",
-        "status": "Completed",
-        "winner": "LAD"
-    },
-    {
-        "away": "ATL",
-        "awayTeamScore": "7",
-        "home": "WAS",
-        "homeTeamScore": "1",
-        "gameTime": "4:05p",
-        "projWinner": "No Projection",
-        "status": "Completed",
-        "winner": "ATL"
-    },
-    {
-        "away": "MIN",
-        "awayTeamScore": "2",
-        "home": "KC",
-        "homeTeamScore": "0",
-        "gameTime": "3:10p",
-        "projWinner": "No Projection",
-        "status": "Completed",
-        "winner": "MIN"
-    },
-    {
-        "away": "CHW",
-        "awayTeamScore": "4",
-        "home": "HOU",
-        "homeTeamScore": "6",
-        "gameTime": "1:10p",
-        "projWinner": "No Projection",
-        "status": "Completed",
-        "winner": "HOU"
-    },
-    {
-        "away": "NYM",
-        "awayTeamScore": "6",
-        "home": "MIA",
-        "homeTeamScore": "2",
-        "gameTime": "4:10p",
-        "projWinner": "No Projection",
-        "status": "Completed",
-        "winner": "NYM"
-    },
-    {
-        "away": "COL",
-        "awayTeamScore": "4",
-        "home": "SD",
-        "homeTeamScore": "8",
-        "gameTime": "5:40p",
-        "projWinner": "No Projection",
-        "status": "Completed",
-        "winner": "SD"
-    },
-    {
-        "away": "PHI",
-        "awayTeamScore": "3",
-        "home": "TEX",
-        "homeTeamScore": "16",
-        "gameTime": "3:07p",
-        "projWinner": "No Projection",
-        "status": "Completed",
-        "winner": "TEX"
-    },
-    {
-        "away": "SF",
-        "awayTeamScore": "7",
-        "home": "NYY",
-        "homeTeamScore": "5",
-        "gameTime": "4:09p",
-        "projWinner": "No Projection",
-        "status": "Completed",
-        "winner": "SF"
-    },
-    {
-        "away": "DET",
-        "awayTeamScore": "2",
-        "home": "TB",
-        "homeTeamScore": "12",
-        "gameTime": "4:10p",
-        "projWinner": "No Projection",
-        "status": "Completed",
-        "winner": "TB"
-    },
-    {
-        "away": "BAL",
-        "awayTeamScore": "8",
-        "home": "BOS",
-        "homeTeamScore": "9",
-        "gameTime": "4:12p",
-        "projWinner": "No Projection",
-        "status": "Completed",
-        "winner": "BOS"
-    },
-    {
-        "away": "CLE",
-        "awayTeamScore": "2",
-        "home": "SEA",
-        "homeTeamScore": "0",
-        "gameTime": "6:39p",
-        "projWinner": "No Projection",
-        "status": "Completed",
-        "winner": "CLE"
-    },
-    {
-        "away": "MIL",
-        "awayTeamScore": "3",
-        "home": "CHC",
-        "homeTeamScore": "1",
-        "gameTime": "1:19p",
-        "projWinner": "No Projection",
-        "status": "Completed",
-        "winner": "MIL"
-    },
-    {
-        "away": "TOR",
-        "awayTeamScore": "1",
-        "home": "STL",
-        "homeTeamScore": "4",
-        "gameTime": "1:16p",
-        "projWinner": "No Projection",
-        "status": "Completed",
-        "winner": "STL"
-    }
+  {
+    "away": "PIT",
+    "awayTeamScore": "2",
+    "home": "CIN",
+    "homeTeamScore": "6",
+    "gameTime": "4:11p",
+    "projWinner": "No Projection",
+    "status": "Completed",
+    "winner": "CIN"
+  },
+  {
+    "away": "LAA",
+    "awayTeamScore": "13",
+    "home": "OAK",
+    "homeTeamScore": "1",
+    "gameTime": "1:07p",
+    "projWinner": "No Projection",
+    "status": "Completed",
+    "winner": "LAA"
+  },
+  {
+    "away": "ARI",
+    "awayTeamScore": "1",
+    "home": "LAD",
+    "homeTeamScore": "10",
+    "gameTime": "6:10p",
+    "projWinner": "No Projection",
+    "status": "Completed",
+    "winner": "LAD"
+  },
+  {
+    "away": "ATL",
+    "awayTeamScore": "7",
+    "home": "WAS",
+    "homeTeamScore": "1",
+    "gameTime": "4:05p",
+    "projWinner": "No Projection",
+    "status": "Completed",
+    "winner": "ATL"
+  },
+  {
+    "away": "MIN",
+    "awayTeamScore": "2",
+    "home": "KC",
+    "homeTeamScore": "0",
+    "gameTime": "3:10p",
+    "projWinner": "No Projection",
+    "status": "Completed",
+    "winner": "MIN"
+  },
+  {
+    "away": "CHW",
+    "awayTeamScore": "4",
+    "home": "HOU",
+    "homeTeamScore": "6",
+    "gameTime": "1:10p",
+    "projWinner": "No Projection",
+    "status": "Completed",
+    "winner": "HOU"
+  },
+  {
+    "away": "NYM",
+    "awayTeamScore": "6",
+    "home": "MIA",
+    "homeTeamScore": "2",
+    "gameTime": "4:10p",
+    "projWinner": "No Projection",
+    "status": "Completed",
+    "winner": "NYM"
+  },
+  {
+    "away": "COL",
+    "awayTeamScore": "4",
+    "home": "SD",
+    "homeTeamScore": "8",
+    "gameTime": "5:40p",
+    "projWinner": "No Projection",
+    "status": "Completed",
+    "winner": "SD"
+  },
+  {
+    "away": "PHI",
+    "awayTeamScore": "3",
+    "home": "TEX",
+    "homeTeamScore": "16",
+    "gameTime": "3:07p",
+    "projWinner": "No Projection",
+    "status": "Completed",
+    "winner": "TEX"
+  },
+  {
+    "away": "SF",
+    "awayTeamScore": "7",
+    "home": "NYY",
+    "homeTeamScore": "5",
+    "gameTime": "4:09p",
+    "projWinner": "No Projection",
+    "status": "Completed",
+    "winner": "SF"
+  },
+  {
+    "away": "DET",
+    "awayTeamScore": "2",
+    "home": "TB",
+    "homeTeamScore": "12",
+    "gameTime": "4:10p",
+    "projWinner": "No Projection",
+    "status": "Completed",
+    "winner": "TB"
+  },
+  {
+    "away": "BAL",
+    "awayTeamScore": "8",
+    "home": "BOS",
+    "homeTeamScore": "9",
+    "gameTime": "4:12p",
+    "projWinner": "No Projection",
+    "status": "Completed",
+    "winner": "BOS"
+  },
+  {
+    "away": "CLE",
+    "awayTeamScore": "2",
+    "home": "SEA",
+    "homeTeamScore": "0",
+    "gameTime": "6:39p",
+    "projWinner": "No Projection",
+    "status": "Completed",
+    "winner": "CLE"
+  },
+  {
+    "away": "MIL",
+    "awayTeamScore": "3",
+    "home": "CHC",
+    "homeTeamScore": "1",
+    "gameTime": "1:19p",
+    "projWinner": "No Projection",
+    "status": "Completed",
+    "winner": "MIL"
+  },
+  {
+    "away": "TOR",
+    "awayTeamScore": "1",
+    "home": "STL",
+    "homeTeamScore": "4",
+    "gameTime": "1:16p",
+    "projWinner": "No Projection",
+    "status": "Completed",
+    "winner": "STL"
+  }
 ]

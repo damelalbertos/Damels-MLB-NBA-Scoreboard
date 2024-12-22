@@ -1,175 +1,84 @@
-import React, { useState, useEffect } from 'react';
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TableRow,
-    Paper,
-    Alert,
-    IconButton, Icon
-} from '@mui/material';
-import ScoreboardIcon from '@mui/icons-material/Scoreboard';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { createGameRows } from './process.js';
-import dayjs from 'dayjs';
-import './App.css';
-import * as constants from "./constants";
-const CONFIG = require('./config.js');
-
-function BasicDatePicker({ value, onChange }) {
-    return (
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DemoContainer components={['DatePicker']}>
-            <DatePicker
-            label="Game Date"
-            value={value}
-            onChange={onChange}
-            />
-          </DemoContainer>
-        </LocalizationProvider>
-      );
-}
-
-function Scoreboard({sport,data}) {
-    return (
-        <TableContainer component={Paper} sx={{ maxHeight: 600 }}>
-            <Table  className='table' sx={{minWidth: 650}} aria-label="simple table">
-                <TableHead className='table-head'>
-                    <TableRow className='header-row'>
-                        <TableCell className="header-cell" align="center">Matchup</TableCell>
-                        <TableCell className="header-cell" align="center">Game Time</TableCell>
-                        <TableCell className="header-cell" align="center">Status</TableCell>
-                        <TableCell className="header-cell" align="center">Winner</TableCell>
-                        <TableCell className="header-cell" align="center">Score</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody className='table-body'>
-                    {data.map((item) => (
-                        <TableRow
-                            key={item.away}
-                            sx={{'&:last-child td, &:last-child th': {border: 0}}}
-                        >
-                            <TableCell component="th" scope="row">
-                                <span className="me-2">
-                                    <img className="team-logo me-1"
-                                        src={`${CONFIG.logos[sport].logoBaseUrl}${CONFIG.logos[sport].teamLogoMap[item.away]}.svg`}
-                                        alt={item.away}
-                                        title={item.away}/>
-                                </span>
-                                <span> @ </span>
-                                <span className="ms-2">
-                                    <img className="team-logo me-1"
-                                        src={`${CONFIG.logos[sport].logoBaseUrl}${CONFIG.logos[sport].teamLogoMap[item.home]}.svg`}
-                                        alt={item.home}
-                                        title={item.home}/>
-                                </span>
-                            </TableCell>
-                            <TableCell className="body-cell" align="center">{item.gameTime}</TableCell>
-                            <TableCell className="body-cell" align="center">{item.status}</TableCell>
-                            <TableCell className="body-cell" align="center">
-                            {
-                                    item.winner === "No Winner Yet" ?
-                                    (item.winner)
-                                    : (
-                                    <img className="team-logo me-1"
-                                        src={`${CONFIG.logos[sport].logoBaseUrl}${CONFIG.logos[sport].teamLogoMap[item.winner]}.svg`}
-                                        alt={item.winner}
-                                        title={item.winner}/>
-                                    )
-                                }
-                                </TableCell>
-                            <TableCell  className="body-cell" align="center">{`${item.awayTeamScore} - ${item.homeTeamScore}`}</TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
-    );
-}
-
+import React, { useState } from "react";
+import { Alert } from "@mui/material";
+import Scoreboard from "./components/Scoreboard";
+import { BasicDatePicker } from "./components/BasicDatePicker";
+import { SportPicker } from "./components/SportPicker";
+import { createGameRows } from "./process.js";
+import dayjs from "dayjs";
+import "./App.css";
 
 export default function App() {
-    const [date, setDate] = useState(dayjs());
-    const [selectedSport, setSelectedSport] = useState('');
-    const [data, setData] = useState([]);
+  const [date, setDate] = useState(dayjs());
+  const [selectedSport, setSelectedSport] = useState("");
+  const [data, setData] = useState([]);
 
-    async function handleSportSelection(newSport) {
-        setSelectedSport(newSport);
-        await fetchData(date, newSport);
+  async function handleSportSelection(newSport) {
+    setSelectedSport(newSport);
+    await fetchData(date, newSport);
+  }
+
+  async function handleDateChange(newDate) {
+    setDate(newDate);
+    await fetchData(newDate, selectedSport);
+  }
+
+  const fetchData = async (date, selectedSport) => {
+    try {
+      const data = await createGameRows(date, selectedSport);
+      console.log(data);
+      setData(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
     }
+  };
 
-    async function handleDateChange(newDate) {
-        setDate(newDate);
-        await fetchData(newDate, selectedSport);
-    }
+  // useEffect(() => {
+  //     const fetchData = async (date) => {
+  //         try {
+  //             const data = await createGameRows(date, selectedSport);
+  //             console.log(data);
+  //             setData(data);
+  //         } catch (error) {
+  //             console.error('Error fetching data:', error);
+  //         }
+  //     }
+  //     fetchData(date);
+  //   }, [date, selectedSport]);
 
-    const fetchData = async (date, selectedSport) => {
-        try {
-            const data = await createGameRows(date, selectedSport);
-            console.log(data);
-            setData(data);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    }
-
-    // useEffect(() => {
-    //     const fetchData = async (date) => {
-    //         try {
-    //             const data = await createGameRows(date, selectedSport);
-    //             console.log(data);
-    //             setData(data);
-    //         } catch (error) {
-    //             console.error('Error fetching data:', error);
-    //         }
-    //     }
-    //     fetchData(date);
-    //   }, [date, selectedSport]);
-
-
-    return (
-        <div className="App">
-            <header className="App-header">
-                <div className='logo'>
-                    <ScoreboardIcon onClick={()=>{setSelectedSport("")}} fontSize='large'/>
-                </div>
-
-            </header>
-            <body className='App-body'>
-                {!selectedSport ?
-                    <div className='SportPicker'>
-                        <IconButton onClick={()=>{handleSportSelection(constants.MLB)}}>
-                            <Icon>
-                                <img src={`${CONFIG.logos.mlb.logoBaseUrl}${CONFIG.logos.mlb.leagueLogoEndpoint}.svg`}/>
-                            </Icon>
-                        </IconButton>
-                        <IconButton onClick={()=>{handleSportSelection(constants.NBA)}}>
-                            <Icon>
-                                <img src={`${CONFIG.logos.nba.logoBaseUrl}${CONFIG.logos.nba.leagueLogoEndpoint}.svg`}/>
-                            </Icon>
-                        </IconButton>
-                    </div>
-                    : ''}
-                {selectedSport ? <div className='DatePicker-Scoreboard'>
-                    <div className='ScoreBoard'>
-                        <div className="Date-Picker">
-                            <BasicDatePicker value={date} onChange={(newDate)=>{handleDateChange(newDate)}}/>
-                        </div>
-                        {
-                            data.length ? (
-                                    <Scoreboard sport={selectedSport} data={data}/>
-                            )
-                            :
-                            <Alert severity="info">No Games Today, Select Different Date</Alert>
-                        }
-                    </div>
-                </div> : ''}
-            </body>
-        </div>
-    );
+  return (
+    <div className="text-center">
+      <div className={"bg-gray-600 min-h-max"}>
+        <p className={"hover:cursor-pointer p-2 font-BlackOpsOne text-3xl"} onClick={() => {
+          setSelectedSport("");
+        }}>
+          DAMEL'S MLB/NBA SCOREBOARD
+        </p>
+      </div>
+      <div className={"flex flex-col p-8"}>
+        {selectedSport ? (
+          <div className="flex flex-col">
+            <div className="min-w-max pb-8">
+              <BasicDatePicker
+                value={date}
+                onChange={(newDate) => {
+                  handleDateChange(newDate);
+                }}
+              />
+            </div>
+            <div className="">
+              {data.length ? (
+                <Scoreboard sport={selectedSport} data={data} />
+              ) : (
+                <Alert severity="info">
+                  No Games Today, Select Different Date
+                </Alert>
+              )}
+            </div>
+          </div>
+        ) : (
+          <SportPicker handleSportSelection={handleSportSelection} />
+        )}
+      </div>
+    </div>
+  );
 }

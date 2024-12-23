@@ -25,49 +25,54 @@ export default function Scoreboard(props) {
             </TableCell>
           </TableRow>
         </TableHead>
-        <TableBody className="bg-slate-600">
+        <TableBody className="bg-slate-500">
           {props.data.map((item) => (
             <TableRow
               key={item.away}
             >
               <TableCell component="th" scope="row">
-                <div className="inline-flex">
+                <div className="flex justify-center items-center space-x-4">
                   <img
                     src={`${CONFIG.logos[props.sport].logoBaseUrl}${CONFIG.logos[props.sport].teamLogoMap[item.away]}.svg`}
                     alt={item.away}
                     title={item.away}
-                    className={"h-20"}
+                    className={"w-20 h-20"}
                   />
-                  <p>@</p>
+                  <p className="text-white font-BlackOpsOne text-lg">vs</p>
                   <img
                     src={`${CONFIG.logos[props.sport].logoBaseUrl}${CONFIG.logos[props.sport].teamLogoMap[item.home]}.svg`}
                     alt={item.home}
                     title={item.home}
-                    className={"h-20"}
+                    className={"w-20 h-20"}
                   /></div>
               </TableCell>
               <TableCell align="center">
-                {item.gameTime}
+                <p className="text-white font-BlackOpsOne text-lg">{item.gameTime}</p>
               </TableCell>
               <TableCell align="center">
-                {item.status}
+                <p className="text-white font-BlackOpsOne text-lg">{item.status}</p>
               </TableCell>
-              <TableCell align="center">
-                {item.winner === "No Winner Yet" ? (
-                  item.winner
-                ) : (
-                  <img
-                    src={`${CONFIG.logos[props.sport].logoBaseUrl}${CONFIG.logos[props.sport].teamLogoMap[item.winner]}.svg`}
-                    alt={item.winner}
-                    title={item.winner}
-                  />
-                )}
+              <TableCell>
+                <div className="flex justify-center">
+                  {item.winner === "No Winner Yet" ? (
+                    <p className="text-white font-BlackOpsOne text-lg">item.winner</p>
+                  ) : (
+                    <img
+                      src={`${CONFIG.logos[props.sport].logoBaseUrl}${CONFIG.logos[props.sport].teamLogoMap[item.winner]}.svg`}
+                      alt={item.winner}
+                      title={item.winner}
+                      className={"w-20 h-20"}
+                    />
+                  )}
+                </div>
               </TableCell>
               <TableCell
                 align="center"
-              >{`${item.awayTeamScore} - ${item.homeTeamScore}`}</TableCell>
+              >
+                <p className="text-white font-BlackOpsOne text-lg">{`${item.awayTeamScore} - ${item.homeTeamScore}`}</p>
+              </TableCell>
             </TableRow>
-          ))}
+            ))}
         </TableBody>
       </Table>
     </TableContainer>

@@ -9,8 +9,11 @@ export const BasicDatePicker = (props) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer components={["DatePicker"]}>
-        <DatePicker label="Game Date" value={props.value}
-                    onChange={props.onChange} />
+        <DatePicker
+          label={<p className="text-white font-BlackOpsOne">Game Date</p>}
+          value={props.value}
+          onChange={props.onChange}
+        />
       </DemoContainer>
     </LocalizationProvider>
   );

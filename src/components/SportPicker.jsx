@@ -6,7 +6,7 @@ import React from "react";
 export const SportPicker = (props) => {
   return (
     <div className={"grid grid-rows-2"}>
-      <div className={"w-1/2 pb-8 justify-self-center self-center font-BlackOpsOne text-5xl"}>
+      <div className={"w-1/2 pb-8 justify-self-center self-center text-white font-BlackOpsOne text-5xl"}>
         <p>PICK A SPORT</p>
       </div>
       <div className={"flex-auto items-center grid gap-16 grid-rows-1 grid-cols-2"}>

@@ -166,6 +166,11 @@ function getScore(sport, gameScoreObj) {
  * @returns {Array} List of game Objects for the chosen date
  */
 export async function createGameRows(date, selectedSport) {
+  // if (selectedSport === constants.MLB) {
+  //     return mlbData;
+  // } else if (selectedSport === constants.NBA) {
+  //     return nbaData;
+  // }
   let rows = [];
   let gamesForDate = await getGameData(selectedSport, { gameDate: date.format("YYYYMMDD") }, CONFIG.endpoint[selectedSport].schedule);
 

@@ -48,7 +48,7 @@ export default function App() {
   return (
     <div className="text-center">
       <div className={"bg-gray-600 min-h-max"}>
-        <p className={"hover:cursor-pointer p-2 font-BlackOpsOne text-3xl"} onClick={() => {
+        <p className={"hover:cursor-pointer p-2 font-BlackOpsOne text-3xl text-white"} onClick={() => {
           setSelectedSport("");
         }}>
           DAMEL'S MLB/NBA SCOREBOARD

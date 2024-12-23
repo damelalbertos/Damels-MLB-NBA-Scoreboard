@@ -11,14 +11,14 @@ export const SportPicker = (props) => {
       </div>
       <div className={"flex-auto items-center grid gap-16 grid-rows-1 grid-cols-2"}>
         <img
-          className={"h-max w-96 justify-self-center hover:cursor-pointer"}
+          className={"w-96 justify-self-center hover:cursor-pointer"}
           onClick={() => {
             props.handleSportSelection(constants.MLB);
           }}
           src={`${CONFIG.logos.mlb.logoBaseUrl}${CONFIG.logos.mlb.leagueLogoEndpoint}.svg`}
           alt={"MLB Icon"} />
         <img
-          className={"h-max w-96 justify-self-center hover:cursor-pointer"}
+          className={"w-96 justify-self-center hover:cursor-pointer"}
           onClick={() => {
             props.handleSportSelection(constants.NBA);
           }}

@@ -1,6 +1,6 @@
 {
-  "name": "mlb-stats",
-  "homepage": "https://damelalbertos.github.io/mlb-stats-project/",
+  "name": "damels-mlb-nba-scoreboard",
+  "homepage": "https://damelalbertos.github.io/Damels-MLB-NBA-Scoreboard/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

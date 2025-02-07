@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/Damels-MLB-NBA-Scoreboard/static/css/main.6be68f6e.css",
-    "main.js": "/Damels-MLB-NBA-Scoreboard/static/js/main.76182c2c.js",
+    "main.js": "/Damels-MLB-NBA-Scoreboard/static/js/main.5a2161bd.js",
     "static/js/453.20b6b2b7.chunk.js": "/Damels-MLB-NBA-Scoreboard/static/js/453.20b6b2b7.chunk.js",
     "static/media/BlackOpsOne-Regular.ttf": "/Damels-MLB-NBA-Scoreboard/static/media/BlackOpsOne-Regular.b8437be32fe8faca71ed.ttf",
     "index.html": "/Damels-MLB-NBA-Scoreboard/index.html",
     "main.6be68f6e.css.map": "/Damels-MLB-NBA-Scoreboard/static/css/main.6be68f6e.css.map",
-    "main.76182c2c.js.map": "/Damels-MLB-NBA-Scoreboard/static/js/main.76182c2c.js.map",
+    "main.5a2161bd.js.map": "/Damels-MLB-NBA-Scoreboard/static/js/main.5a2161bd.js.map",
     "453.20b6b2b7.chunk.js.map": "/Damels-MLB-NBA-Scoreboard/static/js/453.20b6b2b7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6be68f6e.css",
-    "static/js/main.76182c2c.js"
+    "static/js/main.5a2161bd.js"
   ]
 }

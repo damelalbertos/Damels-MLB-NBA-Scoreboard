@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert } from "@mui/material";
+import { Alert, CircularProgress } from "@mui/material";
 import Scoreboard from "./components/Scoreboard";
 import { BasicDatePicker } from "./components/BasicDatePicker";
 import { SportPicker } from "./components/SportPicker";
@@ -11,6 +11,7 @@ export default function App() {
   const [date, setDate] = useState(dayjs());
   const [selectedSport, setSelectedSport] = useState("");
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   async function handleSportSelection(newSport) {
     setSelectedSport(newSport);
@@ -19,6 +20,7 @@ export default function App() {
 
   async function handleDateChange(newDate) {
     setDate(newDate);
+    setLoading(true);
     await fetchData(newDate, selectedSport);
   }
 
@@ -30,6 +32,7 @@ export default function App() {
     } catch (error) {
       console.error("Error fetching data:", error);
     }
+    setLoading(false);
   };
 
   // useEffect(() => {
@@ -66,9 +69,15 @@ export default function App() {
               />
             </div>
             <div className="">
-              {data.length ? (
+              {data.length > 0 && !loading && (
                 <Scoreboard sport={selectedSport} data={data} />
-              ) : (
+              )}
+
+              {loading && (
+                <CircularProgress className={"text-white"} color="inherit"/>
+              )}
+
+              {!loading && !data.length && (
                 <Alert severity="info">
                   No Games Today, Select Different Date
                 </Alert>

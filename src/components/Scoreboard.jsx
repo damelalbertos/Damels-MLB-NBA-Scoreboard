@@ -55,7 +55,7 @@ export default function Scoreboard(props) {
               <TableCell>
                 <div className="flex justify-center">
                   {item.winner === "No Winner Yet" ? (
-                    <p className="text-white font-BlackOpsOne text-lg">item.winner</p>
+                    <p className="text-white font-BlackOpsOne text-lg">{item.winner}</p>
                   ) : (
                     <img
                       src={`${CONFIG.logos[props.sport].logoBaseUrl}${CONFIG.logos[props.sport].teamLogoMap[item.winner]}.svg`}
